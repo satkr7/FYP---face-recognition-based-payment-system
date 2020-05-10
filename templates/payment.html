@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Profile</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		{% extends 'layout.html' %}
+
+		{% block title %}Profile{% endblock %}
+
+		{% block content %}
+		
+		<h2> PAY </h2>
+		<strong>
+		<p>
+		Hello {{ account["username"] }}<br>
+		You balance : Rs {{ account["balance"] }}
+		</p>
+		<br>
+		<p>
+		<strong>
+		<form action="{{ url_for('payment') }}" method="post" enctype="multipart/form-data">
+			Amount <input type="text" name="amount" placeholder="Enter Amount" id="amount" required><br>
+			<div class="msg">{{ msg }}</div><br>
+			<input type="submit" value="PAY"><br>
+		</form>
+		
+		</p>
+		</strong>
+		{% endblock %}
+
+	</body>
+</html>

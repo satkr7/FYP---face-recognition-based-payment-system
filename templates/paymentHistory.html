@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Profile</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		
+		<style>
+		table, th, td { border: 1px solid black; }
+		th, td { padding: 12px; }
+		</style>
+		
+	</head>
+	<body>
+		{% extends 'layout.html' %}
+
+		{% block title %}Profile{% endblock %}
+
+		{% block content %}
+		<h2> Payment History </h2>
+		<br>
+		<center>
+		<strong>
+		<table>
+		<u>
+		<thead>
+			<tr>
+				<th><u>TransID</u></th>
+				<th><u>Customer</u></th>
+				<th><u>Merchant</u></th>
+				<th><u>Amount</u></th>
+			</tr>
+		</thead>
+		</u>
+		<tbody>
+        {% for row in output_data %}
+            <tr>
+                <td>{{row['transactionid']}}</td>
+                <td>{{row['custName']}}</td>
+                <td>{{row['merchName']}}</td>
+                <td>{{row['amount']}}</td>
+            </tr>
+        {% endfor %}
+		</tbody>
+		</table>
+		</strong>
+		<center>
+		
+		{% endblock %}
+
+	</body>
+</html>

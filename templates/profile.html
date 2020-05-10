@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Profile</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	</head>
+	<body>
+		{% extends 'layout.html' %}
+
+		{% block title %}Profile{% endblock %}
+
+		{% block content %}
+		
+		<h2> Profile Page </h2>
+		
+		<div>
+			<p>Your account details are below:</p>
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td>{{ account['username'] }}</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td>{{ account['email'] }}</td>
+			</tr>
+			<tr>
+				<td>Account Type:</td>
+				<td>{{ account['accounttype'] }}</td>
+			</tr>
+			<tr>
+				<td>Account Balance:</td>
+				<td>Rs {{ account['balance'] }}</td>
+			</tr>
+		</table>
+		<br>
+		<p>Update your account details:</p>
+		<a style="text-decoration:none" href="{{ url_for('addBalance') }}"><strong><i class="fas fa-wallet"></i> Add balance to Wallet</strong></a><br><br>
+		<a style="text-decoration:none" href="{{ url_for('captureImage') }}"><strong><i class="fas fa-camera"></i> Upload Image</strong></a>
+		
+		</div>
+		
+		{% endblock %}
+
+	</body>
+</html>

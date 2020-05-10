@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Profile</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
+	</head>
+	<body>
+
+		<center>
+		<div id="camera" style="height:auto;width:auto; text-align:left;"></div>
+		<input type="button" value="CAPTURE" id="btPic" onclick="takeSnapShot()" /> <br><br>
+		</center>
+		
+	</body>
+	
+<script>
+    // CAMERA SETTINGS.
+    Webcam.set({
+        width: 520,
+        height: 430,
+        image_format: 'jpeg',
+        jpeg_quality: 100
+    });
+    Webcam.attach('#camera');
+
+	function goBack() {
+		window.history.go(-1);
+	}
+    // TAKE A SNAPSHOT.
+    takeSnapShot = function () {
+        Webcam.snap(function (data_uri) {
+            downloadImage('image', data_uri);
+			goBack();
+        });
+    }
+
+    // DOWNLOAD THE IMAGE.
+    downloadImage = function (name, datauri) {
+        var a = document.createElement('a');
+        a.setAttribute('download', name + '.jpg');
+        a.setAttribute('href', datauri);
+        a.click();
+    }
+</script>
+	
+</html>
